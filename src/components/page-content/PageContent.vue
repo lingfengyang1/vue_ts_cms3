@@ -120,7 +120,7 @@
 </template>
 
 <script setup lang="ts">
-import { useSystemStore } from '@/store/main/system/system'
+import useSystemStore from '@/store/main/system/system'
 import { Delete, Edit } from '@element-plus/icons-vue'
 import { storeToRefs } from 'pinia'
 import { ref } from 'vue'

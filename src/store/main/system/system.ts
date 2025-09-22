@@ -39,4 +39,4 @@ const useSystemStore = defineStore('system', {
   }
 })
 
-export { useSystemStore }
+export default useSystemStore

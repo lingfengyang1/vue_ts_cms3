@@ -5,8 +5,11 @@
         <component :is="isFold ? 'Expand' : 'Fold'" />
       </el-icon>
       <el-breadcrumb :separator-icon="CaretRight">
-        <el-breadcrumb-item>系统总览</el-breadcrumb-item>
-        <el-breadcrumb-item>核心结束</el-breadcrumb-item>
+        <template v-for="breadCrumb in breadCrumbs" :key="breadCrumb.name">
+          <el-breadcrumb-item :to="breadCrumb.url">
+            {{ breadCrumb.name }}
+          </el-breadcrumb-item>
+        </template>
       </el-breadcrumb>
     </div>
     <div class="right">
@@ -56,15 +59,20 @@ import { TOKEN } from '@/global/constants'
 import router from '@/router'
 import useLoginStore from '@/store/login/login'
 import { localCache } from '@/utils/cache'
-import { resetFirstMenu } from '@/utils/mapper'
+import { mapPathToBreadCrumbs, resetFirstMenu } from '@/utils/mapper'
 import { CaretRight } from '@element-plus/icons-vue'
 import { storeToRefs } from 'pinia'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
+import { useRoute } from 'vue-router'
 
 const isFold = ref<boolean>(false)
 const emit = defineEmits(['iconClick'])
 const loginStore = useLoginStore()
-const { userInfo } = storeToRefs(loginStore)
+const { userInfo, userMenus } = storeToRefs(loginStore)
+const route = useRoute()
+const breadCrumbs = computed(() => {
+  return mapPathToBreadCrumbs(userMenus.value, route.path)
+})
 
 function handleIconClick() {
   isFold.value = !isFold.value

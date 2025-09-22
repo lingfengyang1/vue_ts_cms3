@@ -6,7 +6,7 @@
 
 <script setup lang="ts" name="overview"></script>
 
-<style scoped>
+<style scoped lang="less">
 .overview {
 }
 </style>

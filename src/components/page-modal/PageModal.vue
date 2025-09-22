@@ -56,7 +56,7 @@
 
 <script setup lang="ts">
 import useMainStore from '@/store/main/main'
-import { useSystemStore } from '@/store/main/system/system'
+import useSystemStore from '@/store/main/system/system'
 import { storeToRefs } from 'pinia'
 import { reactive, ref } from 'vue'
 

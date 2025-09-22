@@ -21,6 +21,7 @@
     "axios": "^1.12.2",
     "coderwhy": "^1.2.2",
     "consola": "^3.4.2",
+    "countup.js": "^2.9.0",
     "element-plus": "^2.11.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",

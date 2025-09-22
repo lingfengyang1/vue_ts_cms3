@@ -21,6 +21,9 @@ function mapMenuToRouter(userMenus: any[]) {
       if (userRoute && !firstMenu) {
         firstMenu = subUserMenu
       }
+      if (!userRoutes.find((item) => item.path === userMenu.url)) {
+        userRoutes.push({ path: userMenu.url, redirect: subUserMenu.url })
+      }
     }
   }
   return userRoutes
@@ -34,6 +37,19 @@ function mapPathToMenu(userMenus: any[], path: string) {
     }
   }
   return pathMenu
+}
+
+function mapPathToBreadCrumbs(userMenus: any[], path: string) {
+  const breadCrumbs: any[] = []
+  for (const userMenu of userMenus) {
+    for (const subUserMenu of userMenu.children) {
+      if (path === subUserMenu.url) {
+        breadCrumbs.push({ name: userMenu.name, url: userMenu.url })
+        breadCrumbs.push({ name: subUserMenu.name, url: subUserMenu.url })
+      }
+    }
+  }
+  return breadCrumbs
 }
 
 function mapCheckedMenusToIds(checkedMenus: any[]) {
@@ -58,5 +74,6 @@ export {
   resetFirstMenu,
   mapMenuToRouter,
   mapPathToMenu,
-  mapCheckedMenusToIds
+  mapCheckedMenusToIds,
+  mapPathToBreadCrumbs
 }
