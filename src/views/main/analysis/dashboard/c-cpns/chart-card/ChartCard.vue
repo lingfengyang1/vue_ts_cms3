@@ -4,7 +4,9 @@
       <template #header>
         <span>卡片的头部标题</span>
       </template>
-      <span>呵呵哒</span>
+      <span>
+        <slot name="chart"></slot>
+      </span>
     </el-card>
   </div>
 </template>

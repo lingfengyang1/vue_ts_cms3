@@ -2,6 +2,7 @@ import {
   getAddressSale,
   getAmountList,
   getCategoryCount,
+  getCategoryFavor,
   getCategorySale
 } from '@/service/main/analysis/analysis'
 import type { IAnalysisState } from '@/types/main/analysis/analysis'
@@ -12,6 +13,7 @@ const useAnalysisStore = defineStore('analysis', {
     amountList: [],
     categoryCount: [],
     categorySale: [],
+    categoryFavor: [],
     addressSale: []
   }),
   actions: {
@@ -25,8 +27,11 @@ const useAnalysisStore = defineStore('analysis', {
       const res3 = await getCategorySale()
       this.categorySale = res3?.data
 
-      const res4 = await getAddressSale()
-      this.addressSale = res4?.data
+      const res4 = await getCategoryFavor()
+      this.categoryFavor = res4?.data
+
+      const res5 = await getAddressSale()
+      this.addressSale = res5?.data
     }
   }
 })

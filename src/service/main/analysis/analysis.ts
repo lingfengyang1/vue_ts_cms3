@@ -21,6 +21,13 @@ function getCategorySale() {
   })
 }
 
+function getCategoryFavor() {
+  return hyRequest2.get({
+    url: '/goods/category/favor',
+    headers: {}
+  })
+}
+
 function getAddressSale() {
   return hyRequest2.get({
     url: '/goods/address/sale',
@@ -28,4 +35,10 @@ function getAddressSale() {
   })
 }
 
-export { getAmountList, getCategoryCount, getCategorySale, getAddressSale }
+export {
+  getAmountList,
+  getCategoryCount,
+  getCategorySale,
+  getAddressSale,
+  getCategoryFavor
+}
